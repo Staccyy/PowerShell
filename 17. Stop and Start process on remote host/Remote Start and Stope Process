@@ -1,0 +1,8 @@
+#Start Process
+
+Enter-PSSession <Device Name> -Credential (Get-Credential) | Start-Process -Name 'msedge' | Exit-PSSession
+
+#Stop Process
+
+Enter-PSSession <Device Name> -Credential (Get-Credential) | Stop-Process -Name 'msedge' | Exit-PSSession
+

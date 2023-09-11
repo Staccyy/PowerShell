@@ -1,0 +1,1 @@
+Get-ADUser -Filter 'enabled -eq $true' -Searchbase "OU=IT,DC=enterprise,DC=com" -Properties AccountExpirationDate | Select SAMAccountName, distinguishedName, AccountExpirationDate |export-csv C:TempExpiryDate.csv -NoTypeInformation

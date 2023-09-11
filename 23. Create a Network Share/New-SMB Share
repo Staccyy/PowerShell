@@ -1,0 +1,17 @@
+#create an SMB Share with Multiple Permissions
+
+$Parameters = @{
+    Name = '<Share Name>'
+    Path = 'C:\<File Location>'
+    ChangeAccess = 'CONTOSO\Finance Users','CONTOSO\HR Users'
+    FullAccess = 'Administrators'
+}
+New-SmbShare @Parameters
+
+#create an SMB share 
+$Parameters = @{
+    Name = 'Public'
+    Path = 'D:\Public'
+    FullAccess = 'Contoso\Administrator', 'Contoso\Contoso-HV1$'
+}
+New-SmbShare @Parameters

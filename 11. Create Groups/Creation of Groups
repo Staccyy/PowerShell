@@ -1,0 +1,1 @@
+New-ADGroup -Name "<Group Name>" -SamAccountName <Group Name> -GroupCategory Security/distribution -GroupScope Global/universal/domainlocal -DisplayName "<Group Name>" -Path "CN=Users,DC=domain,DC=Com" -Description "Members of this group are ..."

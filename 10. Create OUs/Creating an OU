@@ -1,0 +1,1 @@
+New-ADOrganizationUnit -Name People -Path "DC=Adatum,DC=com"

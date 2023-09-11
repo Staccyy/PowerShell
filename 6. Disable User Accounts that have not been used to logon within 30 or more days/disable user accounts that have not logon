@@ -1,0 +1,13 @@
+$timespan = New-Timespan -Days 30
+
+Search-ADAccount -UsersOnly -AccountInactive -TimeSpan $timespan | disable-adaccount
+
+#use the -datetime parameter to return accounts that have been inactive since a given date
+Search-ADAccount -UsersOnly -AccountInactive -DateTime ‘8/11/2023’ | disable-adaccount
+
+
+
+#v.2
+
+
+

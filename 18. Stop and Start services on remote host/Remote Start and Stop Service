@@ -1,0 +1,13 @@
+#Start
+
+$service = get-service -ComputerName dc1 -Name <service name>
+
+Start-Service -InputObject $service -Verbose
+$service.Refresh()
+$service
+
+#Stop
+
+Stop-Service -InputObject $service -Verbose
+$service.Refresh()
+$service

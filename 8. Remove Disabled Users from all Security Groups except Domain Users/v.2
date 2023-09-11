@@ -1,0 +1,46 @@
+function Generate-Password
+{
+    param( [int]$Size = 12 )
+    [char[]]$password = @(1..$Size)
+
+    for ($i =0;$i -lt $Size;$i++)
+    {
+        $password[$i]=[char](Get-Random -Minimum 32 -Maximum 126)
+    }
+
+    ConvertTo-SecureString -AsPlainText -String ([string]::Join("",$password)) -Force
+}
+
+$user = Get-ADUser $theUser -Properties SamAccountName,Description,DistinguishedName
+
+if ($user -eq $null)
+{
+    $errorOccurred = $true
+    $errorMessage = "No corresponding user found"
+    Write-Host "$($id) - $($errorMessage)"
+    
+}
+else
+{
+
+    $pass = Generate-Password -Size 16
+
+    #reset password
+    Set-ADAccountPassword -Identity $user.DistinguishedName -Reset -NewPassword $pass
+    
+    #disable user
+    Disable-ADAccount -Identity $user
+    
+    #prepend a description to the user acct
+    Set-ADUser -Identity $user.SamAccountName -Description "TERMED/Separated Employee, Disabled on $(Get-Date -Format "yyyy-MM-dd hh:mm:ss tt")$(if($user.Description.Length -gt 0){" - $($user.Description)"}else{})" -ChangePasswordAtLogon $true -PasswordNeverExpires $false
+    
+    #allow the object to be moved/deleted
+    Set-ADObject -Identity $user.DistinguishedName  -ProtectedFromAccidentalDeletion:$false
+    
+    #remove all memberships
+    $user | Get-ADPrincipalGroupMembership | ? {$_.Name -ne "Domain Users"} | Remove-ADGroupMember -Members $user -Confirm:$false
+    
+    #move the AD object to a deleted user OU
+    Move-ADObject -Identity $user.DistinguishedName -TargetPath $disabledOU -Confirm:$false
+
+}

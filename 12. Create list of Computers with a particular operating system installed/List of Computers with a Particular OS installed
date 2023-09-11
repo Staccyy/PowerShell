@@ -1,0 +1,3 @@
+#version one
+
+Get-ADComputer -filter * -SearchBase "CN=Computers,DC=adatum,DC=com" -Properties OperatingSystem | Sort Name | Format-Table Name,Enabled,OperatingSystem -AutoSize

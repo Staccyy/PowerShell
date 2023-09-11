@@ -1,0 +1,2 @@
+#v.1
+Add-ADGroupMember -identity <GroupName> -members <Account Name>

@@ -1,0 +1,1 @@
+Get-ADUser -identity '<Name>' | Move-ADObject -targetpath "OU=People,DC=Adatum,dc=com"
