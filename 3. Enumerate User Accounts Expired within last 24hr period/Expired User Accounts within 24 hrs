@@ -1,2 +1,2 @@
 $Date = (get-date).addhours(-24)
-Get-ADUser -server domain -credential user -filter * -Properties AccountExpirationDate | Where-object accountexpirationdate -gt $Date | Select-Object SamAccountName, Name, AccountExpirationDate | out-file -FilePath '.\expirations.log'
+Get-ADUser -server <servername> -credential <admin username> -filter * -Properties AccountExpirationDate | Where-object accountexpirationdate -gt $Date | Select-Object SamAccountName, Name, AccountExpirationDate | out-file -FilePath '.\expirations.log'
