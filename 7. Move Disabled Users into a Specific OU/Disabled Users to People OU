@@ -1,1 +1,5 @@
+#version 1 one user
 Get-ADUser -identity '<Name>' | Move-ADObject -targetpath "OU=People,DC=Adatum,dc=com"
+
+#version 2 multiple users
+Search-adaccount -UsersOnly -accountinactive -datetime '8/11/2023' | Move-ADObject -targetpath "ou=people,dc=adatum,dc=com"

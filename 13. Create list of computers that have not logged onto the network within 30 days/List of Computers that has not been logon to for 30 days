@@ -1,5 +1,5 @@
 # Specify inactivity range value below
-$DaysInactive = 90
+$DaysInactive = 30
 # $time variable converts $DaysInactive to LastLogonTimeStamp property format for the -Filter switch to work
 
 $time = (Get-Date).Adddays(-($DaysInactive))
