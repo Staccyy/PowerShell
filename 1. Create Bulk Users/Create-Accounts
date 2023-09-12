@@ -1,4 +1,4 @@
-Create-Accounts-CSV.ps1 -Csv E:\foo\users.csv -Ou 'ou=Imported_Accounts,ou=MyUsers,dc=contoso,dc=com' -HomeLetter W: -HomePath \\filesrvr01\UserHomes -Group 'cn=All_Users,ou=Groups_Security,dc=contoso,dc=com' -Expire 31/07/2018 -Upn contoso.com -L E:\logs -SendTo me@contoso.com -From AD-Account-Creation@contoso.com -Mail exch01.contoso.com
+Create-Accounts-CSV.ps1 -Csv E:\Mod07\Democode\users.csv -Ou 'ou=People,ou=Users,dc=adatum,dc=com' -HomeLetter W: -HomePath \\filesrvr01\UserHomes -Group 'cn=domain_users,ou=Groups_Security,dc=adatum,dc=com' -Expire 13/09/2023 -Upn adatum.com -L E:\logs -SendTo me@adatum.com -From AD-Account-Creation@contoso.com -Mail exch01.contoso.com
 
 
 # Import Active Directory module for running AD cmdlets
