@@ -1,6 +1,4 @@
-first set the account expiration to expired date: 
-Set-adaccountexpiration -datetime 9/11/2023
+#set the account expiration to expired date: 
+Set-adaccountexpiration <Account Name> -datetime 9/11/2023
 
-$domain = Machine Name
-
-Search-ADAccount -Server $domain -Credential $Creds -AccountExpired -UsersOnly -ResultPageSize 2000 -resultSetSize $null| Select-Object Name, SamAccountName, DistinguishedName
+Search-ADAccount -Server <machine name> -Credential $Creds -AccountExpired -UsersOnly -ResultPageSize 2000 -resultSetSize $null| Select-Object Name, SamAccountName, DistinguishedName
