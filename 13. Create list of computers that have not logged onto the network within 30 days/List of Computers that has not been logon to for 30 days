@@ -7,4 +7,4 @@ $time = (Get-Date).Adddays(-($DaysInactive))
 # Identify inactive computer accounts
 
 #figure out how to make the $time work
-Get-ADComputer -Filter {LastLogonTimeStamp -lt $time} -ResultPageSize 2000 -resultSetSize $null -Properties Name, OperatingSystem, SamAccountName, DistinguishedName, LastLogonDate
+Get-ADComputer -Filter {LastLogonTimeStamp -lt $time} -ResultPageSize 2000 -resultSetSize $null -Properties Name,OperatingSystem,SamAccountName,DistinguishedName,LastLogonDate | Sort Name | Format-Table Name,OperatingSystem,SamAccountName,DistinguishedName,LastLogonDate -AutoSize
