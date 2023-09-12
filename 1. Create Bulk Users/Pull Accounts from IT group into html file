@@ -1,0 +1,5 @@
+Get-ADUser -Filter * -Properties Department,City,Office | 
+Where {$PSItem.Department -eq 'IT' -and $PSItem.City -eq 'London'} | 
+Sort Name | 
+Select-Object -Property Name,Department,City,Office | 
+ConvertTo-Html –Property Name,Department,City -PreContent Users | Out-File E:\UserReport.html
