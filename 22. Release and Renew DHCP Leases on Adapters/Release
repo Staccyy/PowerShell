@@ -2,16 +2,5 @@
 
 Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter "IPEnabled=true and DHCPEnabled=true" -ComputerName . | Where-Object -FilterScript {$_.DHCPServer -contains "192.168.1.1"} | ForEach-Object -Process {$_.InvokeMethod("ReleaseDHCPLease",$null)}
 
-
-#Renew
-
-Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter "IPEnabled=true and DHCPEnabled=true" -ComputerName . | Where-Object -FilterScript {$_.DHCPServer -contains "192.168.1.254"} | ForEach-Object -Process {$_.InvokeMethod("ReleaseDHCPLease",$null)}
-
-
-
 #Release on all adapters:
 ( Get-WmiObject -List | Where-Object -FilterScript {$_.Name -eq "Win32_NetworkAdapterConfiguration"} ) .InvokeMethod("ReleaseDHCPLeaseAll", $null)
-
-
-#Renew on all adapters:
-( Get-WmiObject -List | Where-Object -FilterScript {$_.Name -eq "Win32_NetworkAdapterConfiguration"} ) .InvokeMethod("RenewDHCPLeaseAll", $null)

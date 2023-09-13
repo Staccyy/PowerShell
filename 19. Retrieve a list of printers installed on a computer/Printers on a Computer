@@ -1,1 +1,8 @@
 Get-Printer
+
+#remotely on a print server
+Get-Printer -ComputerName PrintServer
+
+#rename a printer and have a list of it
+$Printer = Get-Printer 
+Rename-Printer -InputObject $printer "MXDW"

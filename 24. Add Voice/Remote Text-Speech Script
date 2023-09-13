@@ -1,0 +1,16 @@
+# 2. Enable PSRemoting on their workstation. A method for doing this would be using PSExec:
+
+psexec.exe /acceptEula \\(yourVictimsComputer) -d -h -s powershell.exe ""Enable-PSRemoting -Force"""
+
+# 3. Start a new PSSession connecting to their workstation: 
+
+New-PSSession -ComputerName YourVictimsComputer
+
+# 4. Load this function:
+
+function Say-Text {
+    param ([Parameter(Mandatory=$true, ValueFromPipeline=$true)] [string] $Text)
+    [Reflection.Assembly]::LoadWithPartialName('System.Speech') | Out-Null   
+    $object = New-Object System.Speech.Synthesis.SpeechSynthesizer 
+    $object.Speak($Text) 
+}
