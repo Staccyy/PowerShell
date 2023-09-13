@@ -1,1 +1,4 @@
 New-ADOrganizationUnit -Name People -Path "DC=Adatum,DC=com"
+
+#v.2 try IF ELSE logic
+

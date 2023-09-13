@@ -1,2 +1,4 @@
-#v.1
+#v.1 
 Add-ADGroupMember -identity <GroupName> -members <Account Name>
+
+#v.2 try IF ELSE logic

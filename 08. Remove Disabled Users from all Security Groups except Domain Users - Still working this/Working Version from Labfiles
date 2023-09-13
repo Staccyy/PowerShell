@@ -1,0 +1,28 @@
+#Synopsis
+#Remove domain group memberships of disabled users
+#how would i implement not removing them from domain users?!!?!?!?!
+
+Import-Module ActiveDirectory
+
+$SearchBaseOU = "dc=adatum,dc=com"
+
+$users = Get-Aduser -SearchBase $SearchBaseOU -Filter {enabled -eq "false"} -Properties SamAccountName,Memberof
+
+
+foreach ($user in $users){
+
+    #Get all AD groups where the user is member of
+    $Group = $user.Memberof | ForEach-Object {Get-ADGroup $_ }
+
+    #remove user from each group retrieved above step
+    foreach ($group in $groups){
+
+        Write-Host "Removing" -NoNewline
+        Write-Host $user.SamAccountName -Foreground Green -NoNewline
+        Write-Host " from " -NoNewline
+        Write-Host $Group.Name -ForegroundColor Green
+
+        Remove-ADGroupMember -identity $Group -Members $User.SamAccountName -comfirm:$false
+
+    }
+}
