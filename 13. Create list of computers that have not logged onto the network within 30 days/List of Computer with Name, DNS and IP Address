@@ -1,0 +1,5 @@
+#Position within an array would be the dc1 {0} or cl1 {1}
+$computers = GUI_textbox "computer name(s):"
+foreach ($computer in computers){
+Get-ADComputer -Filter ('Name -like "{0}"' -f $Computer) -Properties IPv4Address | Format-Table Name, DNSHostname, IPv4Address -autosize
+}
