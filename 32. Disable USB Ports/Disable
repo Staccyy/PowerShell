@@ -1,0 +1,7 @@
+#version 1
+$DeviceClass = [wmi]"Win32_USBControllerDevice"
+$DeviceClass.Disable()
+
+#version 2
+$RegistryPath = "HKLM:\SYSTEM\CurrentControlSet\Services\USBSTOR"
+Set-ItemProperty -Path $RegistryPath -Name "Start" -Value 4

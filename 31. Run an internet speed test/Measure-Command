@@ -1,0 +1,1 @@
+$a=Get-Date; Invoke-WebRequest http://client.akamai.com/install/test-objects/10MB.bin|Out-Null; "$((10/((Get-Date)-$a).TotalSeconds)*8) Mbps"
