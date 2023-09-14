@@ -1,0 +1,3 @@
+#This example configures the Active Directory site named Default-First-Site-Name as a hub site
+
+Set-AdSite Default-First-Site-Name -HubSiteEnabled $true

@@ -12,7 +12,7 @@ Remove-ADPrincipalGroupMembership -Identity  $user -MemberOf $ADGroups -Confirm:
 
 
 
-#remove disabled users from security group
+#remove disabled users from security group entirely 
 $Users = Get-ADUser -Filter * -SearchBase "OU=Users,DC=ad,DC=Testing,DC=com" | Where-Object {$_.Enabled -eq $false}
   foreach ($user in $Users) {
   Remove-ADGroup -identity "Employees" }

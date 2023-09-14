@@ -1,0 +1,5 @@
+# This example displays all cache keys for the specified server and Windows PowerShell application.
+
+Dump-ProvisioningCache -Server <Servername>.<domain name>.com -Application Powershell-Proxy -GlobalCache
+
+#app would be Powershell specified in -application PowerShell
